@@ -1,0 +1,101 @@
+Last login: Sun Sep  8 22:48:07 on ttys000
+roshan@Roshans-MacBook-Air Daily 1 % iex
+Erlang/OTP 26 [erts-14.2.5] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit] [dtrace]
+
+Interactive Elixir (1.17.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> [3.14, :pie, "Apple"]
+[3.14, :pie, "Apple"]
+iex(2)> list = [3.14, :pie, "Apple"]
+[3.14, :pie, "Apple"]
+iex(3)> # Prepending (fast)
+nil
+iex(4)> ["π" | list]
+["π", 3.14, :pie, "Apple"]
+iex(5)> # Appending (slow)
+nil
+iex(6)> list ++ ["Cherry"]
+[3.14, :pie, "Apple", "Cherry"]
+iex(7)> [1, 2] ++ [3, 4, 1] # list concatenation
+[1, 2, 3, 4, 1]
+iex(8)> ["foo", :bar, 42] -- [42, "bar"]
+["foo", :bar]
+iex(9)> [1,2,2,3,2,3] -- [1,2,3,2]
+[2, 3]
+iex(10)> [2] -- [2.0]
+[2]
+iex(11)> [2.0] -- [2.0]
+[]
+iex(12)> hd [3.14, :pie, "Apple"] #head of ll
+3.14
+iex(13)> tl [3.14, :pie, "Apple"] #tail
+[:pie, "Apple"]
+iex(14)> [head | tail] = [3.14, :pie, "Apple"]
+[3.14, :pie, "Apple"]
+iex(15)> hea
+error: undefined variable "hea"
+└─ iex:15
+
+** (CompileError) cannot compile code (errors have been logged)
+
+iex(15)> head
+3.14
+iex(16)> tail
+[:pie, "Apple"]
+iex(17)> {3.14, :pie, "Apple"}
+{3.14, :pie, "Apple"}
+iex(18)> File.read("path/to/existing/file")
+{:error, :enoent}
+iex(19)> [foo: "bar", hello: "world"]
+[foo: "bar", hello: "world"]
+iex(20)> [{:foo, "bar"}, {:hello, "world"}]
+[foo: "bar", hello: "world"]
+iex(21)> %{:foo => "bar", "hello" => :world}
+%{:foo => "bar", "hello" => :world}
+iex(22)> map[:foo]
+error: undefined variable "map"
+└─ iex:22
+
+** (CompileError) cannot compile code (errors have been logged)
+
+iex(22)> map = %{:foo => "bar", "hello" => :world}
+%{:foo => "bar", "hello" => :world}
+iex(23)> map[:foo]
+"bar"
+iex(24)> map["hello"]
+:world
+iex(25)> key = "hello"
+"hello"
+iex(26)> %{key => "world"}
+%{"hello" => "world"}
+iex(27)> %{:foo => "bar", :foo => "hello world"}
+warning: key :foo will be overridden in map
+└─ iex:27
+
+%{foo: "hello world"}
+iex(28)> %{foo: "bar", hello: "world"}
+%{foo: "bar", hello: "world"}
+iex(29)> %{foo: "bar", hello: "world"} == %{:foo => "bar", :hello => "world"}
+true
+iex(30)> map = %{foo: "bar", hello: "world"}
+%{foo: "bar", hello: "world"}
+iex(31)> map.hello
+"world"
+iex(32)> map = %{foo: "bar", hello: "world"}
+%{foo: "bar", hello: "world"}
+iex(33)> %{map | foo: "baz"}
+%{foo: "baz", hello: "world"}
+iex(34)> map = %{hello: "world"}
+%{hello: "world"}
+iex(35)> %{map | foo: "baz"}
+** (KeyError) key :foo not found in: %{hello: "world"}
+    (stdlib 5.2.3) :maps.update(:foo, "baz", %{hello: "world"})
+    (stdlib 5.2.3) erl_eval.erl:311: anonymous fn/2 in :erl_eval.expr/6
+    (stdlib 5.2.3) lists.erl:1594: :lists.foldl/3
+    (stdlib 5.2.3) erl_eval.erl:308: :erl_eval.expr/6
+    (elixir 1.17.2) src/elixir.erl:364: :elixir.eval_forms/4
+    (elixir 1.17.2) lib/module/parallel_checker.ex:112: Module.ParallelChecker.verify/1
+    (iex 1.17.2) lib/iex/evaluator.ex:332: IEx.Evaluator.eval_and_inspect/3
+    (iex 1.17.2) lib/iex/evaluator.ex:306: IEx.Evaluator.eval_and_inspect_parsed/3
+iex(35)> Map.put(map, :foo, "baz")
+%{foo: "baz", hello: "world"}
+iex(36)> 
