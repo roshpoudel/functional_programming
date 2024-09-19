@@ -1,0 +1,47 @@
+
+roshan@Roshans-MacBook-Air Daily 5 % iex
+Erlang/OTP 26 [erts-14.2.5] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit] [dtrace]
+
+Interactive Elixir (1.17.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> x = 1
+1
+iex(2)> ^x = 2
+** (MatchError) no match of right hand side value: 2
+    (stdlib 5.2.3) erl_eval.erl:498: :erl_eval.expr/6
+    iex:2: (file)
+iex(2)> {x, ^x} = {2, 1}
+{2, 1}
+iex(3)> x
+2
+iex(4)> ^x
+error: misplaced operator ^x
+
+The pin operator ^ is supported only inside matches or inside custom macros. Make sure you are inside a match or all necessary macros have been required
+└─ iex:4
+
+** (CompileError) cannot compile code (errors have been logged)
+
+iex(4)> key = "hello"
+"hello"
+iex(5)> %{^key => value} = %{"hello" => "world"}
+%{"hello" => "world"}
+iex(6)> value
+"world"
+iex(7)> %{^key => value} = %{:hello => "world"}
+** (MatchError) no match of right hand side value: %{hello: "world"}
+    (stdlib 5.2.3) erl_eval.erl:498: :erl_eval.expr/6
+    iex:7: (file)
+iex(7)> greeting = "Hello"
+"Hello"
+iex(8)> greet = fn
+...(8)>   (^greeting, name) -> "Hi #{name}"
+...(8)>   (greeting, name) -> "#{greeting} #{name}"
+...(8)> end
+#Function<41.105768164/2 in :erl_eval.expr/6>
+iex(9)> greet.("Hello", "Sean")
+"Hi Sean"
+iex(10)> greet.("Mornin", "Sean")
+"Mornin Sean"
+iex(11)> greeting
+"Hello"
+iex(12)> 

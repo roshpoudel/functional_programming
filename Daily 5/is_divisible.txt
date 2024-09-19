@@ -1,0 +1,38 @@
+Last login: Thu Sep 19 00:29:49 on ttys001
+roshan@Roshans-MacBook-Air Daily 5 % iex
+Erlang/OTP 26 [erts-14.2.5] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit] [dtrace]
+
+Interactive Elixir (1.17.2) - press Ctrl+C to exit (type h() ENTER for help)
+
+iex(4)> is_divisible = fn (n) ->
+...(4)>  cond do
+...(4)>   rem(n, 2) == 0 -> "#{n} is divisible by 2"
+...(4)>   rem(n, 3) == 0 -> "#{n} is divisible by 3"
+...(4)>   rem(n, 5) == 0 -> "#{n} is divisible by 5"
+...(4)>   true -> "not divisible"
+...(4)>  end
+...(4)> end
+#Function<42.105768164/1 in :erl_eval.expr/6>
+iex(5)> is_divisible.(5)
+"5 is divisible by 5"
+iex(6)> is_divisible.(13)
+"not divisible"
+iex(7)> is_divisible.(17)
+"not divisible"
+iex(8)> is_divisible.(18)
+"18 is divisible by 2"
+iex(9)> is_divisible.(33)
+"33 is divisible by 3"
+iex(10)> is_divisible.(7)
+"not divisible"
+iex(11)> is_divisible.(58)
+"58 is divisible by 2"
+iex(12)> is_divisible.(89)
+"not divisible"
+iex(13)> is_divisible.(99)
+"99 is divisible by 3"
+iex(14)> is_divisible.(100)
+"100 is divisible by 2"
+iex(15)> is_divisible.(55)
+"55 is divisible by 5"
+iex(16)> 

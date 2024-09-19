@@ -1,0 +1,98 @@
+roshan@Roshans-MacBook-Air Daily 5 % iex  
+Erlang/OTP 26 [erts-14.2.5] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit] [dtrace]
+
+Interactive Elixir (1.17.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> if String.valid?("Hello") do
+...(1)>   "Valid string!"
+...(1)> else
+...(1)>   "Invalid string."
+...(1)> end
+"Valid string!"
+iex(2)> if "a string value" do
+...(2)>   "Truthy"
+...(2)> end
+"Truthy"
+iex(3)> unless is_integer("hello") do
+...(3)>   "Not an Int"
+...(3)> end
+"Not an Int"
+iex(4)> case {:ok, "Hello World"} do
+...(4)>   {:ok, result} -> result
+...(4)>   {:error} -> "Uh oh!"
+...(4)>   _ -> "Catch all"
+...(4)> end
+"Hello World"
+iex(5)> case :even do
+...(5)>   :odd -> "Odd"
+...(5)> end
+** (CaseClauseError) no case clause matching: :even
+    (stdlib 5.2.3) erl_eval.erl:1106: :erl_eval.case_clauses/8
+    iex:5: (file)
+iex(5)> case :even do
+...(5)>   :odd -> "Odd"
+...(5)>   _ -> "Not Odd"
+...(5)> end
+"Not Odd"
+iex(6)> pie = 3.14
+3.14
+iex(7)> case "cherry pie" do
+...(7)>   ^pie -> "Not so tasty"
+...(7)>   pie -> "I bet #{pie} is tasty"
+...(7)> end
+"I bet cherry pie is tasty"
+iex(8)> case {1, 2, 3} do
+...(8)>   {1, x, 3} when x > 0 ->
+...(8)>     "Will match"
+...(8)>   _ ->
+...(8)>     "Won't match"
+...(8)> end
+"Will match"
+iex(9)> cond do
+...(9)>   2 + 2 == 5 ->
+...(9)>     "This will not be true"
+...(9)>   2 * 2 == 3 ->
+...(9)>     "Nor this"
+...(9)>   1 + 1 == 2 ->
+...(9)>     "But this will"
+...(9)> end
+"But this will"
+iex(10)> cond do
+...(10)>   7 + 1 == 0 -> "Incorrect"
+...(10)>   true -> "Catch all"
+...(10)> end
+"Catch all"
+iex(11)> user = %{first: "Sean", last: "Callan"}
+%{first: "Sean", last: "Callan"}
+iex(12)> %{first: "Sean", last: "Callan"}
+%{first: "Sean", last: "Callan"}
+iex(13)> with {:ok, first} <- Map.fetch(user, :first),
+...(13)>      {:ok, last} <- Map.fetch(user, :last),
+...(13)>      do: last <> ", " <> first
+"Callan, Sean"
+iex(14)> user = %{first: "doomspork"}
+%{first: "doomspork"}
+iex(15)> with {:ok, first} <- Map.fetch(user, :first),
+...(15)>      {:ok, last} <- Map.fetch(user, :last),
+...(15)>      do: last <> ", " <> first
+:error
+iex(16)> import Integer
+Integer
+iex(17)> m = %{a: 1, c: 3}
+%{c: 3, a: 1}
+iex(18)> a =
+...(18)>   with {:ok, number} <- Map.fetch(m, :a),
+...(18)>     true <- is_even(number) do
+...(18)>       IO.puts "#{number} divided by 2 is #{div(number, 2)}"
+...(18)>       :even
+...(18)>   else
+...(18)>     :error ->
+...(18)>       IO.puts("We don't have this item in map")
+...(18)>       :error
+...(18)> 
+...(18)>     _ ->
+...(18)>       IO.puts("It is odd")
+...(18)>       :odd
+...(18)>   end
+It is odd
+:odd
+iex(19)> 
