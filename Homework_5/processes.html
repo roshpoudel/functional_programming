@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:////Users/roshan/.vscode/extensions/goessner.mdmath-2.7.4/themes/default/style.css">
+
+</head>
+<body class="markdown-body">
+<div
+            class="github-markdown-body"
+            data-color-mode="auto"
+            data-light-theme="light"
+            data-dark-theme="dark"
+        >
+            <div class="github-markdown-content"><h2 dir="auto" id="roshan-poudel">Roshan Poudel</h2>
+<ol dir="auto">
+<li dir="auto"></li>
+</ol>
+<ul dir="auto">
+<li dir="auto">What does the flush function do? Why might we want to use it? What module is it in?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">Flush function is used to print and clear all messages from the mailbox of the current process. We can use flush for debugging purposes and also clearing the mailbox. Also, when working with processes in iex, flush() helps to quickly view messages in the mailbox without writing a receive block. flush/0 is not in a standard Elixir module like Kernel. Instead, it is part of iex (Interactive Elixir Shell).</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">How can a process send a message to itself (right in IEX or otherwise)?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">Process can send a message to itself by referring to its own PID using self(). eg: send(self(), message). In regular processes, it enables stateful recursion and periodic behavior.</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">What is the purpose of having linked processes?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">The purpose of linked processes is to create a relationship between processes so that they can monitor and react to each other's failures. For eg, if we want the parent process to terminate if one of the intermediate process fail, we should use the linked processes. They enable error propagation, fault isolation, and robust process management.</p>
+</blockquote>
+<ol start="3" dir="auto">
+<li dir="auto"></li>
+</ol>
+<ul dir="auto">
+<li dir="auto">What two key strengths of the language are identified?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">Concurrency and fault-tolerance</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">According to the interviewees, what are the types of cases where Erlang &quot;just works very well&quot;</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">Server Development and Telecommunications</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">Robert Virding says they didn't set out to build a functional language. Why then was making Erlang a functional programming language the right approach?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">Adopting a functional approach, which emphasizes eliminating side effects, naturally facilitated concurrency and fault tolerance. This design choice also simplified garbage collection by avoiding complex backward references. That's why functional programming was a right approach.</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">The guys mention Amdahl's Law (which Virding calls &quot;depressing&quot;). I think Dave Thomas mentioned it in the video we saw first day of class. Look it up and explain what the Law tells us about our programs.</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">Amdahl's Law, mentioned by Virding as &quot;depressing,&quot; addresses the limitations of parallel processing. It states that the maximum speedup of a program is constrained by the portion that cannot be parallelized. For example, if 5% of a program is inherently sequential, the theoretical maximum speedup, even with infinite processors, is 20 times. Amdahl's law can be formulated in the following way:</p>
+</blockquote>
+<blockquote dir="auto"></blockquote>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>S</mi><mtext>latency</mtext></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo><mo>+</mo><mfrac><mi>p</mi><mi>s</mi></mfrac></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+S_{\text{latency}}(s) = \frac{1}{(1-p) + \frac{p}{s}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">latency</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.35244em;vertical-align:-1.0310000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7475em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0310000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></eqn></section></math>
+<blockquote dir="auto">
+<p dir="auto">where:</p>
+</blockquote>
+<blockquote dir="auto">
+<p dir="auto"><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mtext>latency</mtext></msub></mrow><annotation encoding="application/x-tex">S_{\text{latency}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">latency</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></eq> is the theoretical speedup of the execution of the whole task;
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">s</span></span></span></span></eq> is the speedup of the part of the task that benefits from improved system resources;
+<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span></eq> is the proportion of execution time that the part benefiting from improved resources originally occupied.</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">Starting at 30:11 they start to talk about cloud computing, research into massively multicore systems, and the notion of scale change in computing, including speculation about future technologies enabled by scale changes to come. Describe one past and one future &quot;scale change&quot; and what tech these changes enabled or perhaps will enable.</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">The transition from single-core to multicore processors allowed for parallel execution of tasks, significantly enhancing performance and enabling complex applications like real-time data processing.
+The anticipated development of processors with thousands of cores could revolutionize computing by facilitating massive parallelism, potentially leading to advancements in artificial intelligence and real-time simulations</p>
+</blockquote>
+<ol start="4" dir="auto">
+<li dir="auto"></li>
+</ol>
+<ul dir="auto">
+<li dir="auto">Are there any types of data that it fails to receive and output?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">No. All the listed types (int, tuple, atom, list, map, and PID) are supported in Elixir's messaging system.</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">All other required changes are made in the file concurrent.exs</li>
+</ul>
+<ol start="5" dir="auto">
+<li dir="auto"></li>
+</ol>
+<ul dir="auto">
+<li dir="auto">Describe what is returned (not just the type) by each function called in the pipeline.</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">1..num processes creates a range from 1 to num_processes. Then it is passed to Enum.map. For each element in the range, it spawns a new process using the spawn/3 function, which calls the func from the module with the current process's PID [self()] as an argument and that returns a list of PIDs of the spawned processes, which is then passed to schedule_processes along with the to_calculate list and an empty list for results. The schedule_processes function processes these inputs and returns the final sorted list of results.</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">Timing Results</li>
+</ul>
+<blockquote dir="auto"></blockquote>
+<pre><code class="code-line language-#" dir="auto"> 1 4.17
+ 2 1.79
+ 3 1.31
+ 4 0.94
+ 5 1.01
+ 6 0.97
+ 7 0.84
+ 8 1.00
+ 9 0.76
+10 0.80
+</code></pre>
+<ul dir="auto">
+<li dir="auto">SpeedUp Calculations:</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">SpeedUp = <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mtext> </mtext><mi>w</mi><mi>i</mi><mi>t</mi><mi>h</mi><mtext> </mtext><mn>1</mn><mtext> </mtext><mi>p</mi><mi>r</mi><mi>o</mi><mi>c</mi><mi>e</mi><mi>s</mi><mi>s</mi></mrow><mrow><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mtext> </mtext><mi>w</mi><mi>i</mi><mi>t</mi><mi>h</mi><mtext> </mtext><mi>n</mi><mtext> </mtext><mi>p</mi><mi>r</mi><mi>o</mi><mi>c</mi><mi>e</mi><mi>s</mi><mi>s</mi><mi>e</mi><mi>s</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{time with 1 process}{ time with n processes}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4133239999999998em;vertical-align:-0.481108em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322159999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">im</span><span class="mord mathnormal mtight">e</span><span class="mord mtight"> </span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span><span class="mord mtight"> </span><span class="mord mathnormal mtight">n</span><span class="mord mtight"> </span><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">rocesses</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">im</span><span class="mord mathnormal mtight">e</span><span class="mord mtight"> </span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span><span class="mord mtight"> 1 </span><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">rocess</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.481108em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></eq></p>
+</blockquote>
+<blockquote dir="auto">
+<p dir="auto">For 2 processes:
+SpeedUp = <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>4.17</mn><mn>1.79</mn></mfrac><mo>=</mo><mn>2.33</mn></mrow><annotation encoding="application/x-tex">\frac{4.17}{1.79} = 2.33</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1.79</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4.17</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2.33</span></span></span></span></eq></p>
+</blockquote>
+<blockquote dir="auto">
+<p dir="auto">For 4 processes:
+SpeedUp = <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>4.17</mn><mn>0.94</mn></mfrac><mo>=</mo><mn>4.44</mn></mrow><annotation encoding="application/x-tex">\frac{4.17}{0.94} = 4.44</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.94</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4.17</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4.44</span></span></span></span></eq></p>
+</blockquote>
+<blockquote dir="auto">
+<p dir="auto">For 10 processes:
+SpeedUp = <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>4.17</mn><mn>0.80</mn></mfrac><mo>=</mo><mn>5.2</mn></mrow><annotation encoding="application/x-tex">\frac{4.17}{0.80} = 5.2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.80</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4.17</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5.2</span></span></span></span></eq></p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">What operating system, what processor, and how many cores?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">MacOS, Apple M2 processor, 8 cores</p>
+</blockquote>
+<ul dir="auto">
+<li dir="auto">What is the highest (approximate) scheduler utilization you see?</li>
+</ul>
+<blockquote dir="auto">
+<p dir="auto">Near 100 % Scheduler Utilization</p>
+</blockquote>
+</div>
+        </div>
+</body>
+</html>

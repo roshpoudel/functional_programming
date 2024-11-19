@@ -12,20 +12,24 @@ defmodule FibSolver do
     end
   end
 
-  # very inefficient, deliberately
+  @spec fib_calc(integer()) :: integer()
   defp fib_calc(0), do: 0
   defp fib_calc(1), do: 1
   defp fib_calc(n), do: fib_calc(n - 1) + fib_calc(n - 2)
 end
 
 defmodule Scheduler do
+  @spec run(integer(), module(), atom(), list(integer())) :: list({integer(), integer()})
   def run(num_processes, module, func, to_calculate) do
-    #    :observer.start
+    :observer.start()
+
     1..num_processes
     |> Enum.map(fn _ -> spawn(module, func, [self()]) end)
     |> schedule_processes(to_calculate, [])
   end
 
+  @spec schedule_processes(list(pid()), list(integer()), list({integer(), integer()})) ::
+          list({integer(), integer()})
   defp schedule_processes(processes, queue, results) do
     receive do
       {:ready, pid} when queue != [] ->
