@@ -1,3 +1,8 @@
+# Author: Roshan Poudel
+# Assignment: Homework 6
+# Course: CSCI 326 (Functional Programming) - Fall 2024
+# Date: Nov 25, 2024
+
 defmodule DiceRoller do
   # Main function to handle the roll message
   def handle_message({:roll, pid, num, vals}) when is_integer(num) and num > 0 do

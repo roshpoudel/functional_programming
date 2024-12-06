@@ -1,3 +1,8 @@
+# Author: Roshan Poudel
+# Assignment: Homework 6
+# Course: CSCI 326 (Functional Programming) - Fall 2024
+# Date: Nov 25, 2024
+
 defmodule DiceRollerTest do
   use ExUnit.Case
 
